@@ -1,32 +1,15 @@
 library(plyr)
+library(MASS)
 
 #Read Test Data
 xtest <- read.table("test/X_test.txt")
 ytest <- read.table("test/y_test.txt")
 subjtest <- read.table("test/subject_test.txt")
-body_acc_xtest <- read.table("test/Inertial Signals/body_acc_x_test.txt")
-body_acc_ytest <- read.table("test/Inertial Signals/body_acc_y_test.txt")
-body_acc_ztest <- read.table("test/Inertial Signals/body_acc_z_test.txt")
-body_gyro_xtest <- read.table("test/Inertial Signals/body_gyro_x_test.txt")
-body_gyro_ytest <- read.table("test/Inertial Signals/body_gyro_y_test.txt")
-body_gyro_ztest <- read.table("test/Inertial Signals/body_gyro_z_test.txt")
-tot_acc_xtest <- read.table("test/Inertial Signals/total_acc_x_test.txt")
-tot_acc_ytest <- read.table("test/Inertial Signals/total_acc_y_test.txt")
-tot_acc_ztest <- read.table("test/Inertial Signals/total_acc_z_test.txt")
 
 #Read Train Data
 xtrain <- read.table("train/X_train.txt")
 ytrain <- read.table("train/y_train.txt")
 subjtrain <- read.table("train/subject_train.txt")
-body_acc_xtrain <- read.table("train/Inertial Signals/body_acc_x_train.txt")
-body_acc_ytrain <- read.table("train/Inertial Signals/body_acc_y_train.txt")
-body_acc_ztrain <- read.table("train/Inertial Signals/body_acc_z_train.txt")
-body_gyro_xtrain <- read.table("train/Inertial Signals/body_gyro_x_train.txt")
-body_gyro_ytrain <- read.table("train/Inertial Signals/body_gyro_y_train.txt")
-body_gyro_ztrain <- read.table("train/Inertial Signals/body_gyro_z_train.txt")
-tot_acc_xtrain <- read.table("train/Inertial Signals/total_acc_x_train.txt")
-tot_acc_ytrain <- read.table("train/Inertial Signals/total_acc_y_train.txt")
-tot_acc_ztrain <- read.table("train/Inertial Signals/total_acc_z_train.txt")
 
 #Merge Test and Train Data by rows
 x <- rbind(xtest, xtrain)
@@ -70,7 +53,8 @@ x_all <- cbind(subj, y, meanstdx)
 summaryData <- ddply(x_all, .(subject,activityName), numcolwise(mean))
 
 #Write the tidy data to a file
-write.table(summaryData, "tidy_data.txt", sep="\t", row.names=FALSE)
+#write.table(summaryData, "tidy_data.txt", sep="\t", row.names=FALSE)
+write.matrix(summaryData, file="tidy_data.txt", sep = "   ")
 
 
 
