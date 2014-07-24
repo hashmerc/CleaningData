@@ -3,16 +3,17 @@ Getting and Cleaning Data
 
 The purpose of this project is to demonstrate the ability to collect, work with, and clean a data set. The goal is to prepare tidy data that can be used for later analysis.
 
-The script used for getting and cleaning data is called run_analysis.R. 
+The script used for getting and cleaning data is called **run_analysis.R** 
+
 *Note:* 
 All the files under the sub folder Intertial Signals were ignored as they were not applicable for obtaining the required tidy data set for this course project. 
 
-The run_analysis.R script is divided into multiple sections as explained below:.
+The run_analysis.R script is divided into multiple sections as explained below:
 
 ### Reading Test and Train Data
-  * xtest variable is used to store the data from the test/X_test.txt file. 
-  * ytest variable is used to store the data from the test/y_test.txt file. 
-  * subjtest variable is used to store the data from the test/subject_test.txt. 
+  * xtest variable is used to store the data from the *test/X_test.txt* file. 
+  * ytest variable is used to store the data from the *test/y_test.txt* file. 
+  * subjtest variable is used to store the data from the *test/subject_test.txt*. 
   * Similarly the training data set files were read into xtrain, ytrain and subjtrain variables. 
 
 ### Merging Test and Train Data
@@ -20,7 +21,7 @@ The run_analysis.R script is divided into multiple sections as explained below:.
   * Similarly ytest, ytrain and subjtest, subjtrain were merged using rbind function into y and subj variables. 
 
 ### Adding Descriptive names to the variables
-  * As x contains 561 columns for various measurements and the features files has the information for the column names, features.txt file was read into the features variable. 
+  * As x contains 561 columns for various measurements and the features files has the information for the column names, *features.txt* file was read into the features variable. 
   * This features vector was then assigned to the column names for x data set. 
 
 ### Extracting only the mean and std measurement columns
@@ -28,8 +29,8 @@ The run_analysis.R script is divided into multiple sections as explained below:.
   * This data set was now stored in meanstdx variable. 
 
 ### Cleaning y and subj data set
-  * Activity Labels was read from the activity_labels.txt file and then the y dataset was modified to convert the column values to factor using the values and label names extracted from the activity file. 
-  * Finally a descriptive column name was added to the Y and subj data set. 
+  * Activity Labels was read from the *activity_labels.txt* file and then the y dataset was modified to convert the column values to factor using the values and label names extracted from the activity file. 
+  * Finally a descriptive column name was added to the y and subj data set. 
 
 ### Merging y, subj and meanstdx data set 
   * A final large raw data set was created by merging all datasets by columns using the cbind function in R. 
